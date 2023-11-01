@@ -9,37 +9,62 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <!-- Our CSS file -->
-    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./style.css" />
     <title>Brew Finder</title>
   </head>
 
   <body class="">
     <header class="has-text-centered mb-4">
       <h1 class="title is-1 mb-1">
-        <img class="image is-32x32 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
-          Brew Finder
-        <img class="image is-32x32 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
+        <img
+          class="image is-32x32 is-inline-block"
+          src="./images/beer.jpg"
+          alt="Beer Mug"
+        />
+        Brew Finder
+        <img
+          class="image is-32x32 is-inline-block"
+          src="./images/beer.jpg"
+          alt="Beer Mug"
+        />
       </h1>
       <h2 class="has-text-weight-light">Plan your next bar-crawl!</h2>
     </header>
 
     <main class="">
-      <div class="columns is-multiline is-mobile is-flex is-justify-content-center">
-        <div class="column is-4-desktop is-full-mobile has-text-centered has-background-warning custom-border">
+      <div
+        class="columns is-multiline is-mobile is-flex is-justify-content-center"
+      >
+        <div
+          class="column is-4-desktop is-full-mobile has-text-centered has-background-warning custom-border"
+        >
           <h1 class="title is-4 py-3 m-0">Find your most local spots!</h1>
-          <button id="searchCurrentLocationButton" class="button is-medium is-outlined">
+          <button
+            id="searchCurrentLocationButton"
+            class="button is-medium is-outlined"
+          >
             Search my location
           </button>
           <h1 class="title is-4 py-3 m-0">Find a brew by city</h1>
-          <input id="searchInput" class="button is-medium is-outlined mb-3" type="text" />
-          <button id="searchButton" class="button is-medium is-outlined">Search!</button>
+          <input
+            id="searchInput"
+            class="button is-medium is-outlined mb-3"
+            type="text"
+          />
+          <button id="searchButton" class="button is-medium is-outlined">
+            Search!
+          </button>
           <h2 class="title is-4 py-3 m-0">Search History</h2>
           <div class="history"></div>
           <button class="button is-medium is-outlined">Clear History</button>
         </div>
 
-        <div class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img p-5">
-          <h1 class="title has-text-black has-text-centered">Results for "<span id="cityDisplay"></span>"</h1>
+        <div
+          class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img p-5"
+        >
+          <h1 class="title has-text-black has-text-centered">
+            Results for "<span id="cityDisplay"></span>"
+          </h1>
           <div class="">
             <div id="infoGroup-0">
               <ul id="barCard-0" class="box has-border-rounded my-3">
@@ -118,10 +143,21 @@
       </div>
     </main>
 
-    <footer class="has-text-centered has-background-warning footer-border p-3 mt-3">
-      <img class="image is-16x16 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
-      Brew Finder - Application by (Github-User): JBassard97, Ianreynolds01, KandaceGT and Ant-M84>
-      <img class="image is-16x16 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
+    <footer
+      class="has-text-centered has-background-warning footer-border p-3 mt-3"
+    >
+      <img
+        class="image is-16x16 is-inline-block"
+        src="./images/beer.jpg"
+        alt="Beer Mug"
+      />
+      Brew Finder - Application by (Github-User): JBassard97, Ianreynolds01,
+      KandaceGT and Ant-M84>
+      <img
+        class="image is-16x16 is-inline-block"
+        src="./images/beer.jpg"
+        alt="Beer Mug"
+      />
     </footer>
 
     <script src="./script.js"></script>
