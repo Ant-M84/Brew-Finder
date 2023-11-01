@@ -1,0 +1,29 @@
+button {
+    width: 70%;
+    border: 1px solid black;
+}
+
+input {
+    width: 70%;
+}
+
+.bg-img {
+    background-image: url(./images/Lager_With_Head.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.box {
+    border: 2px solid black;
+}
+
+.custom-border {
+    border-top:2px solid black;
+    border-right: 2px solid black;
+}
+
+.footer-border {
+    border: 2px solid black;
+}
