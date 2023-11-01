@@ -103,7 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (barPhone == null) {
         phoneDisplay.textContent = "(No phone information available)";
       } else {
-        phoneDisplay.textContent = barPhone;
+        // Formatting phone number
+        phoneDisplay.textContent = `(${barPhone.substring(
+          0,
+          3
+        )}) ${barPhone.substring(3, 6)}-${barPhone.substring(6, 10)}`;
       }
     }
   }
