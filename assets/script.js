@@ -66,16 +66,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  function fetchPlaceLogos(barWebsite) {
+    // Turning barWebsite into barDomain (ex: target.com)
+    var barDomain = barWebsite.replace(/.*?(example\.com).*/, "$1");
+    console.log(barDomain);
+  }
+
   function displayNearBars(barData) {
     for (i = 0; i < barData.length; i++) {
       // Getting what we need from the data
-      var barCard = document.getElementById(`barCard-${[i]}`);
       barName = barData[i].name;
       barAddress = barData[i].address_1;
       barWebsite = barData[i].website_url;
       barPhone = barData[i].phone;
       // Grabbing where it gets displayed
-
+      var barCard = document.getElementById(`barCard-${[i]}`);
       nameDisplay = document.getElementById(`establishment-${[i]}`);
       addressDisplay = document.getElementById(`address-${[i]}`);
       websiteDisplay = document.getElementById(`website-${[i]}`);
@@ -85,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nameDisplay.textContent = "(No name information available)";
         barCard.style.display = "none";
         console.log(
-          "Something with insufficient data was returned, and not shown to the user -JA"
+          "Something with insufficient data was returned, and not shown to the user -JA\n",
+          barCard
         );
       } else {
         nameDisplay.textContent = barName;
@@ -98,16 +104,29 @@ document.addEventListener("DOMContentLoaded", function () {
       if (barWebsite == null) {
         websiteDisplay.textContent = "(No website for this location available)";
       } else {
-        websiteDisplay.textContent = barWebsite;
+        // Clearing placeholder text
+        websiteDisplay.textContent = "";
+        // Adding barWebsite as an anchor
+        const websiteAnchor = document.createElement("a");
+        websiteAnchor.href = `${barWebsite}`;
+        websiteAnchor.textContent = barWebsite;
+        websiteDisplay.appendChild(websiteAnchor);
+        // Calling function to get images from barAddresses
+        fetchPlaceLogos(barWebsite);
       }
       if (barPhone == null) {
         phoneDisplay.textContent = "(No phone information available)";
       } else {
-        // Formatting phone number
-        phoneDisplay.textContent = `(${barPhone.substring(
+        // Clearing placeholder text
+        phoneDisplay.textContent = "";
+        // Adding barPhone as a tel:anchor
+        const phoneAnchor = document.createElement("a");
+        phoneAnchor.href = `tel:${barPhone}`;
+        phoneAnchor.textContent = `(${barPhone.substring(
           0,
           3
         )}) ${barPhone.substring(3, 6)}-${barPhone.substring(6, 10)}`;
+        phoneDisplay.appendChild(phoneAnchor);
       }
     }
   }
