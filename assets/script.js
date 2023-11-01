@@ -66,10 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  function fetchPlaceLogos(barWebsite) {
-    // Turning barWebsite into barDomain (ex: target.com)
-    var barDomain = barWebsite.replace(/.*?(example\.com).*/, "$1");
-    console.log(barDomain);
+  function fetchPlaceLogos(barDomain, barLogoDisplay) {
+    // Making Logo API call directly in img element
+    logoApiUrl = `https://logo.clearbit.com/${barDomain}?size=100&format=png`;
+
+    barLogoDisplay.src = logoApiUrl;
+    // If there's a final issue getting the logo, it won't show
+    barLogoDisplay.alt = "";
   }
 
   function displayNearBars(barData) {
@@ -80,7 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
       barWebsite = barData[i].website_url;
       barPhone = barData[i].phone;
       // Grabbing where it gets displayed
+      var infoGroup = document.getElementById(`infoGroup-${[i]}`);
       var barCard = document.getElementById(`barCard-${[i]}`);
+      var barLogoDisplay = document.getElementById(`logoDisplay-${[i]}`);
       nameDisplay = document.getElementById(`establishment-${[i]}`);
       addressDisplay = document.getElementById(`address-${[i]}`);
       websiteDisplay = document.getElementById(`website-${[i]}`);
@@ -101,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         addressDisplay.textContent = barAddress;
       }
-      if (barWebsite == null) {
+      if ((barWebsite == null) | !barWebsite) {
         websiteDisplay.textContent = "(No website for this location available)";
       } else {
         // Clearing placeholder text
@@ -111,8 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
         websiteAnchor.href = `${barWebsite}`;
         websiteAnchor.textContent = barWebsite;
         websiteDisplay.appendChild(websiteAnchor);
+        // Turning barWebsite into barDomain (ex: target.com) Gotta love RegExp's
+        var barDomain = barWebsite.replace(/^(https?:\/\/)?(www\.)?/, "");
         // Calling function to get images from barAddresses
-        fetchPlaceLogos(barWebsite);
+        fetchPlaceLogos(barDomain, barLogoDisplay);
       }
       if (barPhone == null) {
         phoneDisplay.textContent = "(No phone information available)";
