@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayNearBars(barData) {
     for (i = 0; i < barData.length; i++) {
       // Getting what we need from the data
-      var barCard = document.getElementById(`barcard-${[i]}`);
+      var barCard = document.getElementById(`barCard-${[i]}`);
       barName = barData[i].name;
       barAddress = barData[i].address_1;
       barWebsite = barData[i].website_url;
@@ -81,9 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
       websiteDisplay = document.getElementById(`website-${[i]}`);
       phoneDisplay = document.getElementById(`phone-${[i]}`);
       // And displaying it!
-      if (barName == null) {
+      if (barName == null || barAddress == null) {
         nameDisplay.textContent = "(No name information available)";
         barCard.style.display = "none";
+        console.log(
+          "Something with insufficient data was returned, and not shown to the user -JA"
+        );
       } else {
         nameDisplay.textContent = barName;
       }
@@ -104,6 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  //   Functionality to Search my Location button
+  var currentLocationButton = document.getElementById(
+    "searchCurrentLocationButton"
+  );
+
+  currentLocationButton.addEventListener("click", fetchUserCity);
 
   // Functionality to Search! button
   var searchInput = document.getElementById("searchInput");
