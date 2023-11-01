@@ -1,5 +1,12 @@
 button {
     width: 70%;
+}
+
+header {
+    border-top: 2px solid black;
+}
+
+img {
     border: 1px solid black;
 }
 
@@ -7,8 +14,16 @@ input {
     width: 70%;
 }
 
-.bg-img {
+.bg-img-1 {
     background-image: url(./images/Lager_With_Head.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.bg-img-2 {
+    background-image: url(./images/Wood_Footer.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -26,4 +41,13 @@ input {
 
 .footer-border {
     border: 2px solid black;
+}
+
+.has-image-centered {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#historyBtn {
+    margin-top: 10px;
 }
