@@ -127,6 +127,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var searchedCity = searchInput.value;
     searchInput.value = "";
     console.log(searchedCity);
+    var resultBtn = document.createElement("button");
+    resultBtn.classList.add("button");
+    resultBtn.innerHTML = searchedCity.toUpperCase();
+    document.getElementById("historyContainer").appendChild(resultBtn);
+
     fetchSearchedCityData(searchedCity);
   });
 
@@ -158,4 +163,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error:", error);
       });
   }
+  var clearHistory = document.getElementById("historyBtn");
+      clearHistory.addEventListener("click", function () {
+      var deleteHistory = document.getElementById("historyContainer");
+      deleteHistory.innerHTML = "";
+    });
 });
