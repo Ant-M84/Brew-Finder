@@ -13,8 +13,9 @@
     <title>Brew Finder</title>
   </head>
 
-  <body class="container">
-    <header class="has-text-centered has-background-warning pt-4 pb-4 mb-3">
+  <body class="container is-fullhd">
+
+    <header class="is-full-desktop is-full-mobile has-text-centered has-background-warning py-4">
       <h1 class="title is-2 mb-1">
         <img
           class="image is-48x48 is-inline-block"
@@ -31,20 +32,13 @@
       <h2 class="has-text-weight-heavy">Plan your next bar-crawl!</h2>
     </header>
 
-    <main class="">
-      <div
-        class="columns is-multiline is-mobile is-flex is-justify-content-center"
-      >
-        <div
-          class="column is-4-desktop is-full-mobile has-text-centered bg-img-2 custom-border"
-        >
-          <h1 class="title is-4 has-text-white py-3 m-0">
-            Find your most local spots!
-          </h1>
-          <button
-            id="searchCurrentLocationButton"
-            class="button is-medium is-outlined"
-          >
+
+    <main>
+      <div class="columns is-gapless is-multiline is-mobile">
+        <div class="column is-4-desktop is-full-mobile has-text-centered bg-img-2">
+          <h1 class="title is-4 has-text-white py-3 m-0">Find your most local spots!</h1>
+          <button id="searchCurrentLocationButton" class="button is-medium is-outlined">
+
             Search my location
           </button>
           <h1 class="title is-4 has-text-white py-3 m-0">
@@ -59,6 +53,16 @@
             Search!
           </button>
           <h2 class="title is-4 has-text-white py-3 m-0">Search History</h2>
+
+          <div id="historyContainer"></div>
+          <button id="historyBtn" class="button is-medium is-outlined mb-5">Clear History</button>
+        </div>
+
+        <div class="column is-8-desktop is-full-mobile bg-img-1">
+          <h1 class="title has-text-black has-text-centered mt-5">Results for "<span id="cityDisplay"></span>"</h1>
+          <div>
+            <div>
+
           <div>
             <select id="historyDropdown" class="select mb-3">
               <!-- "disabled selected" attribute prevents View from being selectable -->
@@ -78,6 +82,7 @@
           </h1>
           <div class="">
             <div id="infoGroup-0">
+
               <ul id="barCard-0" class="box has-border-rounded my-3">
                 <h2 id="establishment-0" class="is-size-5">Establishment</h2>
                 <h3 id="address-0" class="is-size-6">Address</h3>
@@ -154,21 +159,13 @@
       </div>
     </main>
 
-    <footer
-      class="has-text-centered has-background-warning footer-border p-3 mt-3"
-    >
-      <img
-        class="image is-16x16 is-inline-block"
-        src="./images/beer.jpg"
-        alt="Beer Mug"
-      />
-      Brew Finder - Application by (Github-User): JBassard97, Ianreynolds01,
-      KandaceGT and Ant-M84>
-      <img
-        class="image is-16x16 is-inline-block"
-        src="./images/beer.jpg"
-        alt="Beer Mug"
-      />
+
+    <footer class="has-text-centered has-background-warning p-3">
+      <img class="image is-16x16 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
+      Brew Finder - Application by (Github-User): JBassard97, Ianreynolds01, KandaceGT and Ant-M84>
+      <img class="image is-16x16 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
+
+ 
     </footer>
 
     <script src="./script.js"></script>

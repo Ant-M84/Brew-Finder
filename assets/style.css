@@ -4,15 +4,27 @@ button {
 
 header {
     border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+footer {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 img {
     border: 1px solid black;
+    margin: auto;
 }
 
 input {
     width: 70%;
     cursor: text;
+}
+
+ul {
+    max-width: 90%;
+    margin: auto;
 }
 
 .bg-img-1 {
@@ -35,25 +47,29 @@ input {
     border: 2px solid black;
 }
 
-.custom-border {
-    border-top:2px solid black;
-    border-right: 2px solid black;
+.custom-border-1 {
+    border:0px 2px 2px 2px solid black;
 }
+
+
+.ustom-border-2 {
+    border: 0px 2px solid black;
 
 .footer-border {
     border: 2px solid black;
 }
 
-<<<<<<< HEAD
+
 #historyDropdown {
     width: 200px;
-=======
+
 .has-image-centered {
     margin-top: auto;
     margin-bottom: auto;
+
 }
 
 #historyBtn {
     margin-top: 10px;
->>>>>>> 4fa552ff91eb3d9ac8e8feabb78513a892e8bdd1
 }
+
