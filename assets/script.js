@@ -221,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
     savedCitiesArray = currentParsedCities;
     const historyDropdown = document.getElementById("historyDropdown");
     historyDropdown.style.textTransform = "capitalize";
-    historyDropdown.textContent = "";
 
     for (i = 0; i < savedCitiesArray.length; i++) {
       var cityToDisplay = savedCitiesArray[i].searchedCity;
@@ -247,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
     savedCitiesArray = [];
     historyDropdown.textContent = "";
     var placeholder = document.createElement("option");
-    placeholder.textContent = "No History!";
+    placeholder.textContent = "View";
     historyDropdown.appendChild(placeholder);
   });
 });
