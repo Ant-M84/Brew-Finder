@@ -1,75 +1,77 @@
+body {
+  background-color: #444;
+}
+
 button {
-    width: 70%;
+  width: 70%;
 }
 
 header {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 footer {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 img {
-    border: 1px solid black;
-    margin: auto;
+  border: 1px solid black;
+  margin: auto;
 }
 
 input {
-    width: 70%;
-    cursor: text;
+  width: 70%;
+  cursor: text;
 }
 
 ul {
-    max-width: 90%;
-    margin: auto;
+  max-width: 90%;
+  margin: auto;
 }
 
 .bg-img-1 {
-    background-image: url(./images/Lager_With_Head.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url(./images/Lager_With_Head.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .bg-img-2 {
-    background-image: url(./images/Wood_Footer.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url(./images/Wood_Footer.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .box {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 
 .custom-border-1 {
-    border:0px 2px 2px 2px solid black;
+  border: 0px 2px 2px 2px solid black;
 }
-
 
 .ustom-border-2 {
-    border: 0px 2px solid black;
-
-.footer-border {
-    border: 2px solid black;
+  border: 0px 2px solid black;
 }
 
+.footer-border {
+  border: 2px solid black;
+}
 
 #historyDropdown {
-    width: 200px;
+  width: 200px;
+}
 
 .has-image-centered {
-    margin-top: auto;
-    margin-bottom: auto;
-
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #historyBtn {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-
