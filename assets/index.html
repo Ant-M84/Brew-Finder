@@ -14,7 +14,9 @@
   </head>
 
   <body class="container is-fullhd">
-    <header class="is-full-desktop is-full-mobile has-text-centered has-background-warning pt-4 pb-4">
+    <header
+      class="is-full-desktop is-full-mobile has-text-centered has-background-warning pt-4 pb-4"
+    >
       <h1 class="title is-2 mb-1">
         <img
           class="image is-48x48 is-inline-block"
@@ -30,28 +32,27 @@
       </h1>
       <h2 class="has-text-weight-heavy">Plan your next bar-crawl!</h2>
     </header>
-<!-- Alert Modal here (will be hidden 95% of the time) -->
-<div class="modal" id="myModal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Alert Modal</p>
-      <button class="delete" aria-label="close" id="closeModal"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content goes here -->
-      This is your alert message.
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success" id="closeModal">OK</button>
-    </footer>
-  </div>
-</div>
-    
+    <!-- Alert Modal here (will be hidden 95% of the time) -->
+    <div class="modal" id="alertModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Alert Modal</p>
+          <button class="delete" aria-label="close" id="closeModal"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content goes here -->
+          Sorry, we couldn't find that city! Please make sure it's spelled
+          correctly (search CANNOT contain any numbers or special characters)
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="closeModal">OK</button>
+        </footer>
+      </div>
+    </div>
+
     <main class="">
-      <div
-        class="columns is-gapless is-multiline is-mobile"
-      >
+      <div class="columns is-gapless is-multiline is-mobile">
         <div
           class="column is-4-desktop is-full-mobile has-text-centered bg-img-2"
         >
@@ -79,7 +80,9 @@
           <div>
             <select id="historyDropdown" class="has-text-centered select mb-3">
               <!-- "disabled selected" attribute prevents View from being selectable -->
-              <option id="placeHolderOption" disbled selected>Past Searches</option>
+              <option id="placeHolderOption" disbled selected>
+                Past Searches
+              </option>
             </select>
           </div>
           <button id="historyBtn" class="button is-medium is-outlined mb-3">
@@ -87,9 +90,7 @@
           </button>
         </div>
 
-        <div
-          class="column is-gapless is-8-desktop is-full-mobile bg-img-1 p-5"
-        >
+        <div class="column is-gapless is-8-desktop is-full-mobile bg-img-1 p-5">
           <h1 class="title has-text-black has-text-centered mt-3">
             Results for "<span id="cityDisplay"></span>"
           </h1>
@@ -171,9 +172,7 @@
       </div>
     </main>
 
-    <footer
-      class="has-text-centered has-background-warning footer-border p-3"
-    >
+    <footer class="has-text-centered has-background-warning footer-border p-3">
       <img
         class="image is-16x16 is-inline-block"
         src="./images/beer.jpg"
