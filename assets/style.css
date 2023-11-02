@@ -7,8 +7,7 @@ button {
 }
 
 header {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border: 2px solid black;
 }
 
 footer {
@@ -29,6 +28,10 @@ input {
 ul {
   max-width: 90%;
   margin: auto;
+}
+
+ul img {
+  margin-top: 5px;
 }
 
 .bg-img-1 {
