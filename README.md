@@ -1,6 +1,6 @@
 # Brew Finder
 
-// URL link here //
+https://ant-m84.github.io/Brew-Finder/
 
 ## Description
 
@@ -39,11 +39,16 @@ Anthony Michel - https://github.com/Ant-M84
 
 This application utilizes the following APIs:
 
-Bulma for CSS Framework.
+Bulma for CSS Framework:
 Bulma: https://bulma.io/
+
+Clearbit for iconography/logos:
+https://clearbit.com/logo
+
+GeoJS for geo-location:
+GeoJS: https://www.geojs.io/
 
 Open Brewery DB - "...public information on breweries, cideries, brepubs and bottleshops".
 Open Brewery DB: https://www.openbrewerydb.org/
 
-GeoJS for geo-location:
-GeoJS: https://www.geojs.io/
+
