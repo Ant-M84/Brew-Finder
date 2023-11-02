@@ -66,16 +66,26 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  function fetchPlaceLogos(barDomain, barLogoDisplay) {
+    // Making Logo API call directly in img element
+    logoApiUrl = `https://logo.clearbit.com/${barDomain}?size=100&format=png`;
+
+    barLogoDisplay.src = logoApiUrl;
+    // If there's a final issue getting the logo, it won't show
+    barLogoDisplay.alt = "";
+  }
+
   function displayNearBars(barData) {
     for (i = 0; i < barData.length; i++) {
       // Getting what we need from the data
-      var barCard = document.getElementById(`barCard-${[i]}`);
       barName = barData[i].name;
       barAddress = barData[i].address_1;
       barWebsite = barData[i].website_url;
       barPhone = barData[i].phone;
       // Grabbing where it gets displayed
-
+      var infoGroup = document.getElementById(`infoGroup-${[i]}`);
+      var barCard = document.getElementById(`barCard-${[i]}`);
+      var barLogoDisplay = document.getElementById(`logoDisplay-${[i]}`);
       nameDisplay = document.getElementById(`establishment-${[i]}`);
       addressDisplay = document.getElementById(`address-${[i]}`);
       websiteDisplay = document.getElementById(`website-${[i]}`);
@@ -85,7 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nameDisplay.textContent = "(No name information available)";
         barCard.style.display = "none";
         console.log(
-          "Something with insufficient data was returned, and not shown to the user -JA"
+          "Something with insufficient data was returned, and not shown to the user -JA\n",
+          barCard
         );
       } else {
         nameDisplay.textContent = barName;
@@ -95,19 +106,34 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         addressDisplay.textContent = barAddress;
       }
-      if (barWebsite == null) {
+      if ((barWebsite == null) | !barWebsite) {
         websiteDisplay.textContent = "(No website for this location available)";
       } else {
-        websiteDisplay.textContent = barWebsite;
+        // Clearing placeholder text
+        websiteDisplay.textContent = "";
+        // Adding barWebsite as an anchor
+        const websiteAnchor = document.createElement("a");
+        websiteAnchor.href = `${barWebsite}`;
+        websiteAnchor.textContent = barWebsite;
+        websiteDisplay.appendChild(websiteAnchor);
+        // Turning barWebsite into barDomain (ex: target.com) Gotta love RegExp's
+        var barDomain = barWebsite.replace(/^(https?:\/\/)?(www\.)?/, "");
+        // Calling function to get images from barAddresses
+        fetchPlaceLogos(barDomain, barLogoDisplay);
       }
       if (barPhone == null) {
         phoneDisplay.textContent = "(No phone information available)";
       } else {
-        // Formatting phone number
-        phoneDisplay.textContent = `(${barPhone.substring(
+        // Clearing placeholder text
+        phoneDisplay.textContent = "";
+        // Adding barPhone as a tel:anchor
+        const phoneAnchor = document.createElement("a");
+        phoneAnchor.href = `tel:${barPhone}`;
+        phoneAnchor.textContent = `(${barPhone.substring(
           0,
           3
         )}) ${barPhone.substring(3, 6)}-${barPhone.substring(6, 10)}`;
+        phoneDisplay.appendChild(phoneAnchor);
       }
     }
   }
@@ -126,16 +152,21 @@ document.addEventListener("DOMContentLoaded", function () {
   searchButton.addEventListener("click", function () {
     var searchedCity = searchInput.value;
     searchInput.value = "";
-    console.log(searchedCity);
-    var resultBtn = document.createElement("button");
-    resultBtn.classList.add("button");
-    resultBtn.innerHTML = searchedCity.toUpperCase();
-    document.getElementById("historyContainer").appendChild(resultBtn);
 
-    fetchSearchedCityData(searchedCity);
+    //   Using a search pattern to weed out inputs I know won't work
+    var verifyPattern = /[^a-zA-Z\s]/;
+    if (verifyPattern.test(searchedCity)) {
+      window.alert(
+        "The searched city CANNOT contain numbers or special characters!"
+      );
+    } else {
+      fetchSearchedCityData(searchedCity);
+      storeCityHistory(searchedCity);
+    }
   });
 
   function fetchSearchedCityData(searchedCity) {
+    console.log(searchedCity);
     // Replacing spaces with _ -JA
     var searchedCityUnderscored = searchedCity.replace(/ /g, "_");
     // Forcing that to be lowercase -JA
@@ -163,9 +194,60 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error:", error);
       });
   }
-  var clearHistory = document.getElementById("historyBtn");
-      clearHistory.addEventListener("click", function () {
-      var deleteHistory = document.getElementById("historyContainer");
-      deleteHistory.innerHTML = "";
+
+  // Everything below here has to do with local storage setting and getting on page load
+
+  // This line is essential
+  var savedCitiesArray = [];
+
+  if (localStorage.length > 0) {
+    var currentParsedCities = JSON.parse(localStorage.getItem("savedCities"));
+    savedCitiesArray = currentParsedCities;
+    console.log("Here's your City Search history: \n", savedCitiesArray);
+    updateHistoryDropdown(savedCitiesArray);
+  }
+
+  function storeCityHistory(searchedCity) {
+    // searchedCity = searchedCity.toUpperCase();
+    var savedCitiesObject = { searchedCity };
+    savedCitiesArray.push(savedCitiesObject);
+    localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
+    updateHistoryDropdown(savedCitiesArray);
+  }
+
+  function updateHistoryDropdown(savedCitiesArray) {
+    //   Updating savedCitiesArray, which we'll iterate and display
+    currentParsedCities = JSON.parse(localStorage.getItem("savedCities"));
+    savedCitiesArray = currentParsedCities;
+    const historyDropdown = document.getElementById("historyDropdown");
+    historyDropdown.style.textTransform = "capitalize";
+    historyDropdown.textContent = "";
+
+    for (i = 0; i < savedCitiesArray.length; i++) {
+      var cityToDisplay = savedCitiesArray[i].searchedCity;
+      const historyOption = document.createElement("option");
+
+      historyOption.textContent = cityToDisplay;
+      historyOption.value = cityToDisplay;
+      historyOption.style.textTransform = "capitalize";
+
+      historyDropdown.appendChild(historyOption);
+    }
+    // When the user changes the select element, it redos everything for THAT city
+    historyDropdown.addEventListener("change", function () {
+      const searchedCity = historyDropdown.value;
+      fetchSearchedCityData(searchedCity);
     });
+  }
+  // functionality to clear History button
+  var clearButton = document.getElementById("historyBtn");
+
+  clearButton.addEventListener("click", function () {
+    localStorage.clear();
+    savedCitiesArray = [];
+    historyDropdown.textContent = "";
+    var placeholder = document.createElement("option");
+    placeholder.textContent = "No History!";
+    historyDropdown.appendChild(placeholder);
+  });
 });
