@@ -12,6 +12,7 @@ img {
 
 input {
     width: 70%;
+    cursor: text;
 }
 
 .bg-img-1 {
@@ -43,6 +44,10 @@ input {
     border: 2px solid black;
 }
 
+<<<<<<< HEAD
+#historyDropdown {
+    width: 200px;
+=======
 .has-image-centered {
     margin-top: auto;
     margin-bottom: auto;
@@ -50,4 +55,5 @@ input {
 
 #historyBtn {
     margin-top: 10px;
+>>>>>>> 4fa552ff91eb3d9ac8e8feabb78513a892e8bdd1
 }
