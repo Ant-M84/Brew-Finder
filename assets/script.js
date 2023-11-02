@@ -249,4 +249,8 @@ document.addEventListener("DOMContentLoaded", function () {
     placeholder.textContent = "View";
     historyDropdown.appendChild(placeholder);
   });
+
+  // functionality to alert modal
+  const alertModal
+
 });
