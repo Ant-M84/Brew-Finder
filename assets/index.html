@@ -13,49 +13,43 @@
     <title>Brew Finder</title>
   </head>
 
-<<<<<<< HEAD
-  <body class="">
-    <header class="has-text-centered mb-4">
-      <h1 class="title is-1 mb-1">
+  <body class="container">
+    <header class="has-text-centered has-background-warning pt-4 pb-4 mb-3">
+      <h1 class="title is-2 mb-1">
         <img
-          class="image is-32x32 is-inline-block"
+          class="image is-48x48 is-inline-block"
           src="./images/beer.jpg"
           alt="Beer Mug"
         />
         Brew Finder
         <img
-          class="image is-32x32 is-inline-block"
+          class="image is-48x48 is-inline-block"
           src="./images/beer.jpg"
           alt="Beer Mug"
         />
-=======
-  <body class="container">
-    <header class="has-text-centered has-background-warning pt-4 pb-4 mb-3">
-      <h1 class="title is-2 mb-1">
-        <img class="image is-48x48 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
-          Brew Finder
-        <img class="image is-48x48 is-inline-block" src="./images/beer.jpg" alt="Beer Mug">
->>>>>>> 4fa552ff91eb3d9ac8e8feabb78513a892e8bdd1
       </h1>
       <h2 class="has-text-weight-heavy">Plan your next bar-crawl!</h2>
     </header>
 
     <main class="">
-<<<<<<< HEAD
       <div
         class="columns is-multiline is-mobile is-flex is-justify-content-center"
       >
         <div
-          class="column is-4-desktop is-full-mobile has-text-centered has-background-warning custom-border"
+          class="column is-4-desktop is-full-mobile has-text-centered bg-img-2 custom-border"
         >
-          <h1 class="title is-4 py-3 m-0">Find your most local spots!</h1>
+          <h1 class="title is-4 has-text-white py-3 m-0">
+            Find your most local spots!
+          </h1>
           <button
             id="searchCurrentLocationButton"
             class="button is-medium is-outlined"
           >
             Search my location
           </button>
-          <h1 class="title is-4 py-3 m-0">Find a brew by city</h1>
+          <h1 class="title is-4 has-text-white py-3 m-0">
+            Find a brew by city
+          </h1>
           <input
             id="searchInput"
             class="button is-medium is-outlined mb-3"
@@ -64,44 +58,24 @@
           <button id="searchButton" class="button is-medium is-outlined">
             Search!
           </button>
-          <h2 class="title is-4 py-3 m-0">Search History</h2>
-          <div id="historyContainer">
+          <h2 class="title is-4 has-text-white py-3 m-0">Search History</h2>
+          <div>
             <select id="historyDropdown" class="select mb-3">
-              <option value="option1">Currently None</option>
-              <!-- <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option> -->
+              <!-- "disabled selected" attribute prevents View from being selectable -->
+              <option id="placeHolderOption" disbled selected>View</option>
             </select>
           </div>
-
           <button id="historyBtn" class="button is-medium is-outlined">
             Clear History
           </button>
         </div>
 
         <div
-          class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img p-5"
+          class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img-1 p-5"
         >
           <h1 class="title has-text-black has-text-centered">
             Results for "<span id="cityDisplay"></span>"
           </h1>
-=======
-      <div class="columns is-multiline is-mobile is-flex is-justify-content-center">
-        <div class="column is-4-desktop is-full-mobile has-text-centered bg-img-2 custom-border">
-          <h1 class="title is-4 has-text-white py-3 m-0">Find your most local spots!</h1>
-          <button id="searchCurrentLocationButton" class="button is-medium is-outlined">
-            Search my location
-          </button>
-          <h1 class="title is-4 has-text-white py-3 m-0">Find a brew by city</h1>
-          <input id="searchInput" class="button is-medium is-outlined mb-3" type="text" />
-          <button id="searchButton" class="button is-medium is-outlined">Search!</button>
-          <h2 class="title is-4 has-text-white py-3 m-0">Search History</h2>
-          <div id="historyContainer"></div>
-          <button id="historyBtn" class="button is-medium is-outlined">Clear History</button>
-        </div>
-
-        <div class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img-1 p-5">
-          <h1 class="title has-text-black has-text-centered">Results for "<span id="cityDisplay"></span>"</h1>
->>>>>>> 4fa552ff91eb3d9ac8e8feabb78513a892e8bdd1
           <div class="">
             <div id="infoGroup-0">
               <ul id="barCard-0" class="box has-border-rounded my-3">

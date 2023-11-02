@@ -152,16 +152,21 @@ document.addEventListener("DOMContentLoaded", function () {
   searchButton.addEventListener("click", function () {
     var searchedCity = searchInput.value;
     searchInput.value = "";
-    console.log(searchedCity);
-    // var resultBtn = document.createElement("button");
-    // resultBtn.classList.add("button");
-    // resultBtn.innerHTML = searchedCity.toUpperCase();
-    // document.getElementById("historyContainer").appendChild(resultBtn);
 
-    fetchSearchedCityData(searchedCity);
+    //   Using a search pattern to weed out inputs I know won't work
+    var verifyPattern = /[^a-zA-Z\s]/;
+    if (verifyPattern.test(searchedCity)) {
+      window.alert(
+        "The searched city CANNOT contain numbers or special characters!"
+      );
+    } else {
+      fetchSearchedCityData(searchedCity);
+      storeCityHistory(searchedCity);
+    }
   });
 
   function fetchSearchedCityData(searchedCity) {
+    console.log(searchedCity);
     // Replacing spaces with _ -JA
     var searchedCityUnderscored = searchedCity.replace(/ /g, "_");
     // Forcing that to be lowercase -JA
@@ -184,28 +189,65 @@ document.addEventListener("DOMContentLoaded", function () {
         //   If fetch successfull, display city that was searched
         cityDisplay.textContent = searchedCity;
         cityDisplay.style.textTransform = "capitalize";
-        // Storing the city ONLY if there's a successfull response
-        storeCityHistory(searchedCity);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
 
+  // Everything below here has to do with local storage setting and getting on page load
+
   // This line is essential
   var savedCitiesArray = [];
-  
+
+  if (localStorage.length > 0) {
+    var currentParsedCities = JSON.parse(localStorage.getItem("savedCities"));
+    savedCitiesArray = currentParsedCities;
+    console.log("Here's your City Search history: \n", savedCitiesArray);
+    updateHistoryDropdown(savedCitiesArray);
+  }
+
   function storeCityHistory(searchedCity) {
-    searchedCity = searchedCity.toUpperCase();
+    // searchedCity = searchedCity.toUpperCase();
     var savedCitiesObject = { searchedCity };
     savedCitiesArray.push(savedCitiesObject);
     localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
-    // updateHistoryDropdown(savedCitiesArray);
+    updateHistoryDropdown(savedCitiesArray);
   }
-  
-  var clearHistory = document.getElementById("historyBtn");
-      clearHistory.addEventListener("click", function () {
-      var deleteHistory = document.getElementById("historyContainer");
-      deleteHistory.style.display = "none";
+
+  function updateHistoryDropdown(savedCitiesArray) {
+    //   Updating savedCitiesArray, which we'll iterate and display
+    currentParsedCities = JSON.parse(localStorage.getItem("savedCities"));
+    savedCitiesArray = currentParsedCities;
+    const historyDropdown = document.getElementById("historyDropdown");
+    historyDropdown.style.textTransform = "capitalize";
+    historyDropdown.textContent = "";
+
+    for (i = 0; i < savedCitiesArray.length; i++) {
+      var cityToDisplay = savedCitiesArray[i].searchedCity;
+      const historyOption = document.createElement("option");
+
+      historyOption.textContent = cityToDisplay;
+      historyOption.value = cityToDisplay;
+      historyOption.style.textTransform = "capitalize";
+
+      historyDropdown.appendChild(historyOption);
+    }
+    // When the user changes the select element, it redos everything for THAT city
+    historyDropdown.addEventListener("change", function () {
+      const searchedCity = historyDropdown.value;
+      fetchSearchedCityData(searchedCity);
     });
+  }
+  // functionality to clear History button
+  var clearButton = document.getElementById("historyBtn");
+
+  clearButton.addEventListener("click", function () {
+    localStorage.clear();
+    savedCitiesArray = [];
+    historyDropdown.textContent = "";
+    var placeholder = document.createElement("option");
+    placeholder.textContent = "No History!";
+    historyDropdown.appendChild(placeholder);
+  });
 });
