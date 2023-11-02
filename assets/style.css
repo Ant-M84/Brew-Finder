@@ -5,6 +5,7 @@ button {
 
 input {
     width: 70%;
+    cursor: text;
 }
 
 .bg-img {
@@ -26,4 +27,8 @@ input {
 
 .footer-border {
     border: 2px solid black;
+}
+
+#historyDropdown {
+    width: 200px;
 }

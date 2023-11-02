@@ -153,10 +153,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var searchedCity = searchInput.value;
     searchInput.value = "";
     console.log(searchedCity);
-    var resultBtn = document.createElement("button");
-    resultBtn.classList.add("button");
-    resultBtn.innerHTML = searchedCity.toUpperCase();
-    document.getElementById("historyContainer").appendChild(resultBtn);
+    // var resultBtn = document.createElement("button");
+    // resultBtn.classList.add("button");
+    // resultBtn.innerHTML = searchedCity.toUpperCase();
+    // document.getElementById("historyContainer").appendChild(resultBtn);
 
     fetchSearchedCityData(searchedCity);
   });
@@ -184,14 +184,28 @@ document.addEventListener("DOMContentLoaded", function () {
         //   If fetch successfull, display city that was searched
         cityDisplay.textContent = searchedCity;
         cityDisplay.style.textTransform = "capitalize";
+        // Storing the city ONLY if there's a successfull response
+        storeCityHistory(searchedCity);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
+
+  // This line is essential
+  var savedCitiesArray = [];
+  
+  function storeCityHistory(searchedCity) {
+    searchedCity = searchedCity.toUpperCase();
+    var savedCitiesObject = { searchedCity };
+    savedCitiesArray.push(savedCitiesObject);
+    localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
+    // updateHistoryDropdown(savedCitiesArray);
+  }
+  
   var clearHistory = document.getElementById("historyBtn");
       clearHistory.addEventListener("click", function () {
       var deleteHistory = document.getElementById("historyContainer");
-      deleteHistory.innerHTML = "";
+      deleteHistory.style.display = "none";
     });
 });
