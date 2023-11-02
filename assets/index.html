@@ -13,8 +13,8 @@
     <title>Brew Finder</title>
   </head>
 
-  <body class="container">
-    <header class="has-text-centered has-background-warning pt-4 pb-4 mb-3">
+  <body class="container is-fullhd">
+    <header class="is-full-desktop is-full-mobile has-text-centered has-background-warning pt-4 pb-4">
       <h1 class="title is-2 mb-1">
         <img
           class="image is-48x48 is-inline-block"
@@ -33,10 +33,10 @@
 
     <main class="">
       <div
-        class="columns is-multiline is-mobile is-flex is-justify-content-center"
+        class="columns is-gapless is-multiline is-mobile"
       >
         <div
-          class="column is-4-desktop is-full-mobile has-text-centered bg-img-2 custom-border"
+          class="column is-4-desktop is-full-mobile has-text-centered bg-img-2"
         >
           <h1 class="title is-4 has-text-white py-3 m-0">
             Find your most local spots!
@@ -60,20 +60,20 @@
           </button>
           <h2 class="title is-4 has-text-white py-3 m-0">Search History</h2>
           <div>
-            <select id="historyDropdown" class="select mb-3">
+            <select id="historyDropdown" class="has-text-centered select mb-3">
               <!-- "disabled selected" attribute prevents View from being selectable -->
-              <option id="placeHolderOption" disbled selected>View</option>
+              <option id="placeHolderOption" disbled selected>Past Searches</option>
             </select>
           </div>
-          <button id="historyBtn" class="button is-medium is-outlined">
+          <button id="historyBtn" class="button is-medium is-outlined mb-3">
             Clear History
           </button>
         </div>
 
         <div
-          class="column is-gapless is-8-desktop is-full-mobile custom-border bg-img-1 p-5"
+          class="column is-gapless is-8-desktop is-full-mobile bg-img-1 p-5"
         >
-          <h1 class="title has-text-black has-text-centered">
+          <h1 class="title has-text-black has-text-centered mt-3">
             Results for "<span id="cityDisplay"></span>"
           </h1>
           <div class="">
@@ -155,7 +155,7 @@
     </main>
 
     <footer
-      class="has-text-centered has-background-warning footer-border p-3 mt-3"
+      class="has-text-centered has-background-warning footer-border p-3"
     >
       <img
         class="image is-16x16 is-inline-block"
