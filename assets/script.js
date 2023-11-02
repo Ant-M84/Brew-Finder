@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         // Error handling done here -JA
+        // If the geo api can't get user's location
         console.error("Error:", error);
+        modalShow();
       });
   }
 
@@ -156,9 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //   Using a search pattern to weed out inputs I know won't work
     var verifyPattern = /[^a-zA-Z\s]/;
     if (verifyPattern.test(searchedCity)) {
-      window.alert(
-        "The searched city CANNOT contain numbers or special characters!"
-      );
+      modalShow();
     } else {
       fetchSearchedCityData(searchedCity);
       storeCityHistory(searchedCity);
@@ -192,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error:", error);
+        modalShow();
       });
   }
 
@@ -221,6 +222,10 @@ document.addEventListener("DOMContentLoaded", function () {
     savedCitiesArray = currentParsedCities;
     const historyDropdown = document.getElementById("historyDropdown");
     historyDropdown.style.textTransform = "capitalize";
+    historyDropdown.textContent = "";
+    var placeholder = document.createElement("option");
+    placeholder.textContent = "Past Searches";
+    historyDropdown.appendChild(placeholder);
 
     for (i = 0; i < savedCitiesArray.length; i++) {
       var cityToDisplay = savedCitiesArray[i].searchedCity;
@@ -246,7 +251,21 @@ document.addEventListener("DOMContentLoaded", function () {
     savedCitiesArray = [];
     historyDropdown.textContent = "";
     var placeholder = document.createElement("option");
-    placeholder.textContent = "View";
+    placeholder.textContent = "No History";
     historyDropdown.appendChild(placeholder);
   });
+
+  // functionality to alert modal
+  const alertModal = document.getElementbyId("alertModal");
+  const closeModal = document.getElementbyId("closeModal");
+
+  function modalShow() {
+    alertModal.classList.add("is-active");
+  }
+
+  function modalHide() {
+    modalHide.classList.remove("is-active");
+  }
+
+  closeModal.addEventListener("click", modalHide);
 });
