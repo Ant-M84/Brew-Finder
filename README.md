@@ -1,6 +1,6 @@
 # Brew Finder
 
-https://ant-m84.github.io/Brew-Finder/
+Application URL: https://ant-m84.github.io/Brew-Finder/
 
 ## Description
 
@@ -21,7 +21,7 @@ If you wish to search in a specific location, enter the city/town in the input s
 The results of the search for either option will appear on the right side of the browser for larger resolution devices, or underneath if utilizing a mobile device.
 
 
-![Screenshot of Brew Finder application](assets/images/screenshot.png)
+![Screenshot of Brew Finder application](./assets/images/brew-finder-application.jpg)
 
 ## Credits
 
