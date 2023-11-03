@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function fetchNearbyBars(userLatitude, userLongitude) {
     const barsByLatLonApi =
       // NOTE: searching by city gives weird results, this automatically sorts results by NEAREST
-      `https://api.openbrewerydb.org/v1/breweries?by_dist=${userLatitude},${userLongitude}&per_page=8`;
+      `https://api.openbrewerydb.org/v1/breweries?by_dist=${userLatitude},${userLongitude}&per_page=20`;
 
     fetch(barsByLatLonApi)
       .then((response) => {
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Forcing that to be lowercase -JA
     var searchedCityClean = searchedCityUnderscored.toLowerCase();
 
-    var searchByCityUrl = `https://api.openbrewerydb.org/v1/breweries?by_city=${searchedCityClean}&per_page=8`;
+    var searchByCityUrl = `https://api.openbrewerydb.org/v1/breweries?by_city=${searchedCityClean}&per_page=20`;
 
     fetch(searchByCityUrl)
       .then((response) => {
@@ -256,16 +256,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // functionality to alert modal
-  const alertModal = document.getElementbyId("alertModal");
-  const closeModal = document.getElementbyId("closeModal");
+  var alertModal = document.getElementById("alertModal");
+  var closeModalX = document.getElementById("closeModalX");
+  var closeModalOK = document.getElementById("closeModalOK");
 
   function modalShow() {
     alertModal.classList.add("is-active");
   }
 
   function modalHide() {
-    modalHide.classList.remove("is-active");
+    alertModal.classList.remove("is-active");
   }
 
-  closeModal.addEventListener("click", modalHide);
+  closeModalX.addEventListener("click", modalHide);
+
+  closeModalOK.addEventListener("click", modalHide);
 });
